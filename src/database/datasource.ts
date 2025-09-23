@@ -13,7 +13,7 @@ export const dataSource = new DataSource({
   database: process.env.DB_NAME,
   username: process.env.DB_USERNAME,
   synchronize: Boolean(process.env.DB_SYNC),
-  entities: [String(process.env.DB_ENTITIES)],
-  migrations: [String(process.env.DB_MIGRATIONS)],
+  entities: ['dist/**/*.entity{.ts,.js}'],
+  migrations: ['dist/database/migrations/*{.ts,.js}'],
   ssl: true,
 });

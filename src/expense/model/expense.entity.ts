@@ -1,5 +1,6 @@
 import { BaseModel } from 'src/common/base-model';
-import { Column, Entity } from 'typeorm';
+import { User } from 'src/user/model/user.entity';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 
 export enum Category {
   GROCERIES = 'groceries',
@@ -32,4 +33,8 @@ export class Expense extends BaseModel {
     default: Category.OTHERS,
   })
   category: Category;
+
+  @ManyToOne(() => User, (user) => user.expenses)
+  @JoinColumn({ name: 'userId' })
+  user: User;
 }
